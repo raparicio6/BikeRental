@@ -54,7 +54,7 @@ namespace BikeRental.Tests.Domain
         }
 
         [Test]
-        public void FinalizationDateLessThanEmissionDateThrowsException()
+        public void FinalizationDateLessThanEmissionDateThrowsFinalizationDateOfRentalLessThanEmissionDateException()
         {
             RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
             RentalFinalizationDate = RentalEmissionDate.AddDays(-7);
