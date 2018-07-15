@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BikeRental
+namespace BikeRental.Domain
 {
-    public class Class1
+    public interface Role
     {
+        string GetName();        
     }
 }

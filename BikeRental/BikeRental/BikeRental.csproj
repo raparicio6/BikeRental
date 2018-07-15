@@ -46,13 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="FirstTest.cs" />
+    <Compile Include="Domain\Bike.cs" />
+    <Compile Include="Domain\BikeSpecifications.cs" />
+    <Compile Include="Domain\BikeState.cs" />
+    <Compile Include="Domain\EmployeeData.cs" />
+    <Compile Include="Domain\ICashier.cs" />
+    <Compile Include="Domain\IClient.cs" />
+    <Compile Include="Domain\IRental.cs" />
+    <Compile Include="Domain\ISale.cs" />
+    <Compile Include="Domain\Money.cs" />
+    <Compile Include="Domain\Payment.cs" />
+    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\TypeOfCurrency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Domain\MoneyTestCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
