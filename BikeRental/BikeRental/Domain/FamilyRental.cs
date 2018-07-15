@@ -8,17 +8,41 @@ namespace BikeRental.Domain
 {
     public class FamilyRental : ISale, IPromotion
     {
-        public IClient Client => throw new NotImplementedException();
+        public IClient Client { get; }
 
-        public Money Money => throw new NotImplementedException();
+        public IList<IRental> Rentals { get; }
 
-        public Payment Payment { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public FamilyRentalInformation Information { get; }
 
-        public PromotionRules PromotionRules => throw new NotImplementedException();
+        public Payment Payment { get; set; }
+
+        public Money Cost
+        {
+            get { return new Money (this.ApplyDiscount(this.Rentals.Sum(rental => rental.Cost.Amount)), 
+                this.Rentals.First().CostPerUnitOfTime.TypeOfCurrency); }
+        }
+
+        public PromotionRules Rules
+        {
+            get { return this.Information.Rules; }
+        }
+
+        public FamilyRental(IClient client, FamilyRentalInformation information, IList<IRental> rentals)
+        {
+            this.Client = client;
+            this.Information = information;
+            this.Rentals = rentals;
+            this.Payment = null;
+        }
 
         public bool IsPaid()
         {
-            throw new NotImplementedException();
+            return this.Payment != null;
+        }
+
+        private decimal ApplyDiscount(decimal amount)
+        {
+            return (amount * (100 - (decimal)this.Information.DiscountPercent)) / 100;
         }
     }
 }

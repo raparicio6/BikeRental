@@ -10,28 +10,28 @@ namespace BikeRental.Domain
     {
         public string IdentificationCode { get; }
 
-        public BikeSpecifications BikeSpecifications { get; }
+        public BikeSpecifications Specifications { get; }
 
-        public BikeState BikeState { get; private set; }
+        public BikeState State { get; private set; }
 
         public IRental Rental { get; set; }
 
-        public Bike(string identificationCode, BikeSpecifications bikeSpecifications)
+        public Bike(string identificationCode, BikeSpecifications specifications)
         {
             this.IdentificationCode = identificationCode;
-            this.BikeSpecifications = bikeSpecifications;
-            this.BikeState = BikeState.Free;
+            this.Specifications = specifications;
+            this.State = BikeState.Free;
             this.Rental = null;
         }
 
         public bool IsAvailable()
         {
-            return this.BikeState == BikeState.Free;
+            return this.State == BikeState.Free;
         }
 
-        public void ChangeState(BikeState bikeState)
+        public void ChangeState(BikeState state)
         {
-            this.BikeState = bikeState;
+            this.State = state;
         }
 
     }

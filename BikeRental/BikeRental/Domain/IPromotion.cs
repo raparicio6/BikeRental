@@ -8,7 +8,7 @@ namespace BikeRental.Domain
 {
     public interface IPromotion
     {
-        PromotionRules PromotionRules { get; }
+        PromotionRules Rules { get; }
 
     }
 }

@@ -10,6 +10,7 @@ namespace BikeRental.Domain
     public abstract class RentalModality
     {
         public abstract UnitOfTime UnitOfTime { get; }
+
         public Money CostPerUnitOfTime { get; } 
 
         public RentalModality(Money costPerUnitOfTime)

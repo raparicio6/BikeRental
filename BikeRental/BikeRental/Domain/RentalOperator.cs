@@ -9,9 +9,13 @@ namespace BikeRental.Domain
     public class RentalOperator : IRentalOperator
     {
         public FamilyRentalInformation CurrentFamilyRentalInformation { get; private set; }
+
         public RentalByHour CurrentRentalByHourModality { get; private set; }
+
         public RentalByDay CurrentRentalByDayModality { get; private set; }
+
         public RentalByWeek CurrentRentalByWeekModality { get; private set; }
+
         public string Name
         {
             get { return "RentalOperator"; }            

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BikeRental.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,33 +9,57 @@ namespace BikeRental.Domain
 {
     public class Rental : IRental
     {
-        public RentalEmission RentalEmission => throw new NotImplementedException();
+        public IClient Client { get; }
 
-        public Bike Bike => throw new NotImplementedException();
+        public RentalEmission Emission { get; }
 
-        public UnitOfTime UnitOfTime => throw new NotImplementedException();
+        public Bike Bike { get; }
 
-        public RentalFinalization RentalFinalization => throw new NotImplementedException();
+        public RentalModality Modality { get; }
 
-        public IClient Client => throw new NotImplementedException();
-
-        public Money Money => throw new NotImplementedException();
-
-        public Payment Payment { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public RentalFinalization Finish()
+        public UnitOfTime UnitOfTime
         {
-            throw new NotImplementedException();
+            get { return this.Modality.UnitOfTime; }
         }
 
+        public Money CostPerUnitOfTime
+        {
+            get { return this.Modality.CostPerUnitOfTime;}
+        }
+
+        public RentalFinalization Finalization { get; set; }
+
+        public Payment Payment { get; set; }
+
+        public Money Cost
+        {
+            get
+            {
+                if (this.Finalization == null)
+                    throw new RentalHasNotFinalizedYetException("Rental has not finalized yet");
+                return this.Modality.CalculateRentalCost(this.Emission.CreationDate,
+                    this.Finalization.CreationDate);
+            }
+        }
+
+        public Rental(IClient client, RentalEmission emission, Bike bike, RentalModality modality)
+        {
+            this.Client = client;
+            this.Emission = emission;
+            this.Bike = bike;
+            this.Modality = modality;
+            this.Finalization = null;
+            this.Payment = null;
+        }
+        
         public bool IsFinished()
         {
-            throw new NotImplementedException();
+            return this.Finalization != null;
         }
 
         public bool IsPaid()
         {
-            throw new NotImplementedException();
+            return this.Payment != null;
         }
     }
 }

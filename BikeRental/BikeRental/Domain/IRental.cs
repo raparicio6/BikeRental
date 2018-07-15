@@ -8,11 +8,11 @@ namespace BikeRental.Domain
 {
     public interface IRental : ISale
     {        
-        RentalEmission RentalEmission { get; }
+        RentalEmission Emission { get; }
         Bike Bike { get; }
-        UnitOfTime UnitOfTime { get; }
-        RentalFinalization Finish();
-        RentalFinalization RentalFinalization { get; }
+        UnitOfTime UnitOfTime { get; }      
+        Money CostPerUnitOfTime { get; }
+        RentalFinalization Finalization { get; set; }
         bool IsFinished();
 
     }

@@ -25,7 +25,7 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void WhenIsCreatedItsStateIsFree()
         {
-            Assert.AreEqual(BikeState.Free, this.Bike.BikeState);
+            Assert.AreEqual(BikeState.Free, this.Bike.State);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace BikeRental.Tests.Domain
         public void StateIsChangedCorrectly()
         {
             this.Bike.ChangeState(BikeState.In_Use);
-            Assert.AreEqual(BikeState.In_Use, this.Bike.BikeState);
+            Assert.AreEqual(BikeState.In_Use, this.Bike.State);
         }
 
         [Test]

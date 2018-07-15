@@ -9,7 +9,7 @@ namespace BikeRental.Domain
     public interface ISale
     {
         IClient Client { get; }
-        Money Money { get; }
+        Money Cost { get; }
         bool IsPaid();
         Payment Payment { get; set; }
 

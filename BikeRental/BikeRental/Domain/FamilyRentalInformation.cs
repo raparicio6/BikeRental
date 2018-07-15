@@ -9,17 +9,20 @@ namespace BikeRental.Domain
     public class FamilyRentalInformation
     {
         public float DiscountPercent { get; }
+
         public int MinimumRentals { get; }
+
         public int MaximumRentals { get; }
-        public PromotionRules PromotionRules { get; }
+
+        public PromotionRules Rules { get; }
 
         public FamilyRentalInformation(float discountPercent, int minimumRentals, int maximumRentals, 
-            PromotionRules promotionRules)
+            PromotionRules rules)
         {
             this.DiscountPercent = discountPercent;
             this.MinimumRentals = minimumRentals;
             this.MaximumRentals = maximumRentals;
-            this.PromotionRules = promotionRules;
+            this.Rules = rules;
         }
 
     }

@@ -49,8 +49,10 @@
     <Compile Include="Domain\Bike.cs" />
     <Compile Include="Domain\BikeSpecifications.cs" />
     <Compile Include="Domain\BikeState.cs" />
+    <Compile Include="Domain\Cashier.cs" />
     <Compile Include="Domain\EmployeeData.cs" />
     <Compile Include="Domain\Exceptions\FinalizationDateOfRentalLessThanEmissionDateException.cs" />
+    <Compile Include="Domain\Exceptions\RentalHasNotFinalizedYetException.cs" />
     <Compile Include="Domain\FamilyRental.cs" />
     <Compile Include="Domain\FamilyRentalInformation.cs" />
     <Compile Include="Domain\ICashier.cs" />
