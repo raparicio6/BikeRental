@@ -37,7 +37,7 @@ namespace BikeRental.Domain
 
         public Role GetRoleByName(string roleName)
         {
-            return this.Roles.Where(role => role.GetName() == roleName).First();
+            return this.Roles.Where(role => role.Name == roleName).First();
         }
 
     }

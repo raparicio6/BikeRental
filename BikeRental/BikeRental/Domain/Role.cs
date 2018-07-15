@@ -8,6 +8,6 @@ namespace BikeRental.Domain
 {
     public interface Role
     {
-        string GetName();        
+        string Name { get; }        
     }
 }

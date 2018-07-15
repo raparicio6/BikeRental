@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace BikeRental.Domain
 {
-    public interface ISale
+    public class RentalByWeek : RentalModality
     {
-        IClient Client { get; }
-        Money Money { get; }
-        bool IsPaid();
-        Payment Payment { get; set; }
-
     }
 }
