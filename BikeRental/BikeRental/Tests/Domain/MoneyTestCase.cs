@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BikeRental.Tests.Domain
 {
     [TestFixture]
-    public class MoneyTest
+    public class MoneyTestCase
     {
         private Money Dollars_50;
         private Money Dollars_40;
