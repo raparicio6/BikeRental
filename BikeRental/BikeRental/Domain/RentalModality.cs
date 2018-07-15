@@ -22,7 +22,7 @@ namespace BikeRental.Domain
         protected void ValidateDates(DateTime rentalEmissionDate, DateTime rentalFinalizationDate)
         {
             if (rentalFinalizationDate.CompareTo(rentalEmissionDate) <= 0)
-                throw new FinalizationDateOfRentalLessThanEmissionDate("The finalization date of the rental must be higher than the date of emission");
+                throw new FinalizationDateOfRentalLessThanEmissionDateException("The finalization date of the rental must be higher than the date of emission");
         }
 
     }

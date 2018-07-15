@@ -60,7 +60,7 @@ namespace BikeRental.Tests.Domain
             RentalFinalizationDate = RentalEmissionDate.AddDays(-7);
 
             Assert.That(() => this.RentalByWeek.CalculateRentalCost(this.RentalEmissionDate,
-                this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalLessThanEmissionDate>());
+                this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalLessThanEmissionDateException>());
         }
 
     }
