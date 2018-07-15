@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BikeRental.Tests.Domain
 {
     [TestFixture]
-    public class MoneyTestCase
+    public class MoneyTest
     {
         private Money Dollars_50;
         private Money Dollars_40;
@@ -27,31 +27,31 @@ namespace BikeRental.Tests.Domain
 
         #region Equality Operator Tests
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithSameAmountAndSameTypeOfCurrencyUsingEqualOperatorAreEqual()
         {
             Assert.AreEqual(true, this.Dollars_50 == this.Another_Dollars_50);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndSameTypeOfCurrenrcyUsingEqualOperatorArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_50 == this.Dollars_40);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithSameAmountAndDiffentTypeOfCurrencyUsingEqualOperatorArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_40 == this.Argentine_Peso_40);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndDiffentTypeOfCurrencyUsingEqualOperatorArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_50 == this.Argentine_Peso_40);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingMoneyWithNullUsingEqualOperatorArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_50 == null);
@@ -61,31 +61,31 @@ namespace BikeRental.Tests.Domain
 
         #region Inequality Operator Tests
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithSameAmountAndSameTypeOfCurrencyUsingInequalOperatorAreNotUnequal()
         {
             Assert.AreEqual(false, this.Dollars_50 != this.Another_Dollars_50);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndSameTypeOfCurrenrcyUsingInequalOperatorAreUnequal()
         {
             Assert.AreEqual(true, this.Dollars_50 != this.Dollars_40);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithSameAmountAndDiffentTypeOfCurrencyUsingInequalOperatorAreUnequal()
         {
             Assert.AreEqual(true, this.Dollars_40 != this.Argentine_Peso_40);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndDiffentTypeOfCurrencyUsingInequalOperatorAreUnequal()
         {
             Assert.AreEqual(true, this.Dollars_50 != this.Argentine_Peso_40);
         }
 
-        [TestCase]
+        [Test]
         public void ComparingMoneyWithNullUsingInequalOperatorAreUnequal()
         {
             Assert.AreEqual(true, this.Dollars_50 != null);
@@ -95,37 +95,37 @@ namespace BikeRental.Tests.Domain
 
         #region Equality Method Tests
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithSameAmountAndSameTypeOfCurrencyUsingEqualMethodAreEqual()
         {
             Assert.AreEqual(true, this.Dollars_50.Equals(this.Another_Dollars_50));
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithDifferentAmountAndSameTypeOfCurrencyUsingEqualMethodArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_50.Equals(this.Dollars_40));
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithSameAmountAndDifferentTypeOfCurrencyUsingEqualMethodArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_40.Equals(this.Argentine_Peso_40));
         }
 
-        [TestCase]
+        [Test]
         public void ComparingTwoMoneysWithDifferentAmountAndDifferentTypeOfCurrencyUsingEqualMethodArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_50.Equals(this.Argentine_Peso_40));
         }
 
-        [TestCase]
+        [Test]
         public void ComparingMoneyWithNullUsingEqualMethodArentEqual()
         {
             Assert.AreEqual(false, this.Dollars_50.Equals(null));
         }
 
-        [TestCase]
+        [Test]
         public void ComparingMoneyWithNonMoneyClassTypeUsingEqualMethodDoesntThrowException()
         {            
             Assert.That(() => this.Dollars_50.Equals((object)10), Throws.Nothing);
@@ -135,25 +135,25 @@ namespace BikeRental.Tests.Domain
 
         #region GetHashCode Tests
 
-        [TestCase]
+        [Test]
         public void HashCodeOfTwoMoneysWithSameAmountAndSameTypeOfCurrencyAreEqual()
         {
             Assert.AreEqual(this.Dollars_50.GetHashCode(), this.Another_Dollars_50.GetHashCode());
         }
 
-        [TestCase]
+        [Test]
         public void HashCodeOfTwoMoneysWithDifferentAmountAndSameTypeOfCurrencyArentEqual()
         {
             Assert.AreNotEqual(this.Dollars_50.GetHashCode(), this.Dollars_40.GetHashCode());
         }
 
-        [TestCase]
+        [Test]
         public void HashCodeOfTwoMoneysWithSameAmountAndDifferentTypeOfCurrencyArentEqual()
         {
             Assert.AreNotEqual(this.Dollars_40.GetHashCode(), this.Argentine_Peso_40.GetHashCode());
         }
 
-        [TestCase]
+        [Test]
         public void HashCodeOfTwoMoneysWithDifferentAmountAndDifferentTypeOfCurrencyArentEqual()
         {
             Assert.AreNotEqual(this.Dollars_50.GetHashCode(), this.Argentine_Peso_40.GetHashCode());

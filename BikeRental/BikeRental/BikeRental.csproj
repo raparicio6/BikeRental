@@ -50,6 +50,7 @@
     <Compile Include="Domain\BikeSpecifications.cs" />
     <Compile Include="Domain\BikeState.cs" />
     <Compile Include="Domain\EmployeeData.cs" />
+    <Compile Include="Domain\Exceptions\FinalizationDateOfRentalLessThanEmissionDate.cs" />
     <Compile Include="Domain\FamilyRental.cs" />
     <Compile Include="Domain\FamilyRentalInformation.cs" />
     <Compile Include="Domain\ICashier.cs" />
@@ -73,6 +74,9 @@
     <Compile Include="Domain\UnitOfTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Domain\MoneyTestCase.cs" />
+    <Compile Include="Tests\Domain\RentalByDayTestCase.cs" />
+    <Compile Include="Tests\Domain\RentalByHourTestCase.cs" />
+    <Compile Include="Tests\Domain\RentalByWeekTestCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

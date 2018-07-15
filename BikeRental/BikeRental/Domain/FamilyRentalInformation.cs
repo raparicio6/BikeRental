@@ -8,5 +8,8 @@ namespace BikeRental.Domain
 {
     public class FamilyRentalInformation
     {
+
+
+
     }
 }
