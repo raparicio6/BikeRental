@@ -17,7 +17,8 @@ namespace BikeRental.Tests.Domain
         [SetUp]
         public void SetUp()
         {
-            this.Person = new Person("33162982", "Frederick", "Jane", "1-541-754-3010", "fjane@test.com");
+            this.Person = new Person(TestsConstants.PERSON_ID_NUMBER, TestsConstants.PERSON_NAME,
+                TestsConstants.PERSON_LAST_NAME, TestsConstants.PERSON_PHONE, TestsConstants.PERSON_EMAIL);
         }
 
         [Test]

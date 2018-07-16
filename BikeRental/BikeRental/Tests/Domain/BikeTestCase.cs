@@ -16,8 +16,9 @@ namespace BikeRental.Tests.Domain
         [SetUp]
         public void SetUp()
         {
-            BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
-            this.Bike = new Bike("ABC043", bikeSpecifications);
+            BikeSpecifications bikeSpecifications = new BikeSpecifications(TestsConstants.BIKE_BRAND, 
+                TestsConstants.BIKE_MODEL, TestsConstants.BIKE_COLOR);
+            this.Bike = new Bike(TestsConstants.BIKE_IDENTIFICATION_CODE, bikeSpecifications);
         }
 
         [Test]

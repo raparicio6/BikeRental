@@ -14,7 +14,7 @@ namespace BikeRental.Tests.Domain
     {
         private RentalByDay RentalByDay;
 
-        private Money Dollars_20;
+        private Money CostPerUnitOfTime;
 
         private DateTime RentalBeginningDate;
         private DateTime RentalFinalizationDate;
@@ -22,8 +22,9 @@ namespace BikeRental.Tests.Domain
         [SetUp]
         public void SetUp()
         {
-            this.Dollars_20 = new Money(20, Currency.Dollar);
-            this.RentalByDay = new RentalByDay(this.Dollars_20);
+            this.CostPerUnitOfTime = new Money(TestsConstants.RENTAL_BY_DAY_AMOUNT,
+                TestsConstants.RENTAL_BY_DAY_TYPE_OF_CURRENCY);
+            this.RentalByDay = new RentalByDay(this.CostPerUnitOfTime);
         }
 
         [Test]
@@ -32,7 +33,7 @@ namespace BikeRental.Tests.Domain
             this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
             this.RentalFinalizationDate = this.RentalBeginningDate.AddDays(1);
 
-            Assert.AreEqual(this.Dollars_20, this.RentalByDay.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
+            Assert.AreEqual(this.CostPerUnitOfTime, this.RentalByDay.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
         }
 
         [Test]
@@ -40,7 +41,7 @@ namespace BikeRental.Tests.Domain
         {
             this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
             this.RentalFinalizationDate = this.RentalBeginningDate.AddDays(2);
-            Money dollarsMultipliedByTwo = new Money(this.Dollars_20.Amount * 2, this.Dollars_20.TypeOfCurrency);
+            Money dollarsMultipliedByTwo = new Money(this.CostPerUnitOfTime.Amount * 2, this.CostPerUnitOfTime.TypeOfCurrency);
 
             Assert.AreEqual(dollarsMultipliedByTwo, this.RentalByDay.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
         }
@@ -50,7 +51,7 @@ namespace BikeRental.Tests.Domain
         {
             this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
             this.RentalFinalizationDate = this.RentalBeginningDate.AddDays(0.5);
-            Money halfOfTheDollars = new Money(this.Dollars_20.Amount / 2, this.Dollars_20.TypeOfCurrency);
+            Money halfOfTheDollars = new Money(this.CostPerUnitOfTime.Amount / 2, this.CostPerUnitOfTime.TypeOfCurrency);
 
             Assert.AreEqual(halfOfTheDollars, this.RentalByDay.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
         }

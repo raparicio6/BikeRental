@@ -14,17 +14,17 @@ namespace BikeRental.Domain
 
         public Money CurrentSalary { get; set; }
 
-        public DateTime DateOfEntry { get; }
+        public DateTime EntryDate { get; }
 
-        public DateTime? DateOfExit { get; set;  }
+        public DateTime? ExitDate { get; set;  }
 
-        public EmployeeData(Person person, long idNumberInCompany, Money currentSalary, DateTime dateOfEntry)
+        public EmployeeData(Person person, long idNumberInCompany, Money currentSalary, DateTime entryDate)
         {
             this.Person = person;
             this.IdNumberInCompany = idNumberInCompany;
             this.CurrentSalary = currentSalary;
-            this.DateOfEntry = dateOfEntry;
-            this.DateOfExit = null;
+            this.EntryDate = entryDate;
+            this.ExitDate = null;
         }
 
     }

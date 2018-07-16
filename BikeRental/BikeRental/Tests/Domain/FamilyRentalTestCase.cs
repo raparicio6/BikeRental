@@ -37,11 +37,16 @@ namespace BikeRental.Tests.Domain
             rentals.Add(this.MockRental3.Object);
             rentals.Add(this.MockRental4.Object);
 
-            PromotionRules rules = new PromotionRules(TestsConstants.FAMILY_RENTAL_TERMS_AND_CONDITIONS, 
-            new DateTime(2018, 5, 1, 0, 0, 0), new DateTime(2018, 8, 1, 0, 0, 0));
-            FamilyRentalInformation information = new FamilyRentalInformation(30, 3, 5, rules);
+            PromotionRules familyRentalRules = new PromotionRules(TestsConstants.FAMILY_RENTAL_TERMS_AND_CONDITIONS, 
+            new DateTime(TestsConstants.FAMILY_RENTAL_EFFECTIVE_DATE_YEAR, TestsConstants.FAMILY_RENTAL_EFFECTIVE_DATE_MONTH,
+            TestsConstants.FAMILY_RENTAL_EFFECTIVE_DATE_DAY, 0, 0, 0),
+            new DateTime(TestsConstants.FAMILY_RENTAL_EXPIRATON_DATE_YEAR, TestsConstants.FAMILY_RENTAL_EXPIRATON_DATE_MONTH,
+            TestsConstants.FAMILY_RENTAL_EXPIRATON_DATE_DAY, 0, 0, 0));
+            FamilyRentalInformation familyRentalInformation = new FamilyRentalInformation(
+                TestsConstants.FAMILY_RENTAL_DISCOUNT_PERCENT, TestsConstants.FAMILY_RENTAL_MINIMUM_RENTALS,
+                TestsConstants.FAMILY_RENTAL_MAXIMUM_RENTALS, familyRentalRules);
 
-            this.FamilyRental = new FamilyRental(this.MockClient.Object, information, rentals);
+            this.FamilyRental = new FamilyRental(this.MockClient.Object, familyRentalInformation, rentals);
         }       
 
         #region Is Paid Tests

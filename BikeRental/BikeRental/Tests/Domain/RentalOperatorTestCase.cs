@@ -22,20 +22,29 @@ namespace BikeRental.Tests.Domain
         [SetUp]
         public void SetUp()
         {
-            PromotionRules rules = new PromotionRules(TestsConstants.FAMILY_RENTAL_TERMS_AND_CONDITIONS,
-            new DateTime(2018, 5, 1, 0, 0, 0), new DateTime(2018, 8, 1, 0, 0, 0));
-            FamilyRentalInformation information = new FamilyRentalInformation(30, 3, 5, rules);
+            PromotionRules familyRentalRules = new PromotionRules(TestsConstants.FAMILY_RENTAL_TERMS_AND_CONDITIONS,
+            new DateTime(TestsConstants.FAMILY_RENTAL_EFFECTIVE_DATE_YEAR, TestsConstants.FAMILY_RENTAL_EFFECTIVE_DATE_MONTH,
+            TestsConstants.FAMILY_RENTAL_EFFECTIVE_DATE_DAY, 0, 0, 0),
+            new DateTime(TestsConstants.FAMILY_RENTAL_EXPIRATON_DATE_YEAR, TestsConstants.FAMILY_RENTAL_EXPIRATON_DATE_MONTH,
+            TestsConstants.FAMILY_RENTAL_EXPIRATON_DATE_DAY, 0, 0, 0));
+            FamilyRentalInformation familyRentalInformation = new FamilyRentalInformation(
+                TestsConstants.FAMILY_RENTAL_DISCOUNT_PERCENT, TestsConstants.FAMILY_RENTAL_MINIMUM_RENTALS,
+                TestsConstants.FAMILY_RENTAL_MAXIMUM_RENTALS, familyRentalRules);
 
-            RentalByHour rentalByHour = new RentalByHour(new Money(5, Currency.Dollar));
-            RentalByDay rentalByDay = new RentalByDay(new Money(20, Currency.Dollar));
-            RentalByWeek rentalByWeek = new RentalByWeek(new Money(60, Currency.Dollar));
+            RentalByHour rentalByHour = new RentalByHour(new Money(TestsConstants.RENTAL_BY_HOUR_AMOUNT,
+                TestsConstants.RENTAL_BY_HOUR_TYPE_OF_CURRENCY));
+            RentalByDay rentalByDay = new RentalByDay(new Money(TestsConstants.RENTAL_BY_DAY_AMOUNT,
+                TestsConstants.RENTAL_BY_DAY_TYPE_OF_CURRENCY));
+            RentalByWeek rentalByWeek = new RentalByWeek(new Money(TestsConstants.RENTAL_BY_WEEK_AMOUNT,
+                TestsConstants.RENTAL_BY_WEEK_TYPE_OF_CURRENCY));
 
-            this.RentalOperator = new RentalOperator(information, rentalByHour, rentalByDay, rentalByWeek);
+            this.RentalOperator = new RentalOperator(familyRentalInformation, rentalByHour, rentalByDay, rentalByWeek);
 
             this.Client = new Client();
 
-            BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
-            this.Bike = new Bike("ABC043", bikeSpecifications);
+            BikeSpecifications bikeSpecifications = new BikeSpecifications(TestsConstants.BIKE_BRAND,
+                TestsConstants.BIKE_MODEL, TestsConstants.BIKE_COLOR);
+            this.Bike = new Bike(TestsConstants.BIKE_IDENTIFICATION_CODE, bikeSpecifications);
         }
 
         #region Provide Rental Tests
