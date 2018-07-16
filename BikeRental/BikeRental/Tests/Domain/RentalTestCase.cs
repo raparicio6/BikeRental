@@ -24,14 +24,14 @@ namespace BikeRental.Tests.Domain
             this.MockClient = new Mock<IClient>();
 
             this.MockRentalOperator = new Mock<IRentalOperator>();
-            RentalBeginning emission = new RentalBeginning(this.MockRentalOperator.Object);
+            RentalBeginning beginning = new RentalBeginning(this.MockRentalOperator.Object);
 
             BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
             Bike bike = new Bike("ABC043", bikeSpecifications);
 
             RentalModality modality = new RentalByHour(new Money(5, Currency.Dollar));
 
-            this.Rental = new Rental(this.MockClient.Object, emission, bike, modality);
+            this.Rental = new Rental(this.MockClient.Object, beginning, bike, modality);
         }
 
         #region Is Finalized Tests
@@ -80,12 +80,12 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void CostIsGottenWhenItIsFinalized()
         {
-            // This is so that the time of emission does not coincide with the time of finalization.
+            // This is so that the time of beginning does not coincide with the time of finalization.
             System.Threading.Thread.Sleep(2000);
 
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
-            Money expectedCost = this.Rental.Modality.CalculateRentalCost(this.Rental.Emission.DateOfBeginning, 
-                this.Rental.Finalization.DateOfFinalization);
+            Money expectedCost = this.Rental.Modality.CalculateRentalCost(this.Rental.Beginning.Date, 
+                this.Rental.Finalization.Date);
             Assert.AreEqual(expectedCost, this.Rental.Cost);
         }
 

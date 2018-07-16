@@ -11,7 +11,7 @@ namespace BikeRental.Domain
     {
         public IClient Client { get; }
 
-        public RentalBeginning Emission { get; }
+        public RentalBeginning Beginning { get; }
 
         public Bike Bike { get; }
 
@@ -27,15 +27,15 @@ namespace BikeRental.Domain
             {
                 if (this.Finalization == null)
                     throw new RentalHasNotFinalizedYetException("Rental has not finalized yet");
-                return this.Modality.CalculateRentalCost(this.Emission.DateOfBeginning,
-                    this.Finalization.DateOfFinalization);
+                return this.Modality.CalculateRentalCost(this.Beginning.Date,
+                    this.Finalization.Date);
             }
         }
 
-        public Rental(IClient client, RentalBeginning emission, Bike bike, RentalModality modality)
+        public Rental(IClient client, RentalBeginning beginning, Bike bike, RentalModality modality)
         {
             this.Client = client;
-            this.Emission = emission;
+            this.Beginning = beginning;
             this.Bike = bike;
             this.Modality = modality;
             this.Finalization = null;

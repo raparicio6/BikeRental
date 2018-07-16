@@ -8,7 +8,7 @@ namespace BikeRental.Domain
 {
     public interface IRental : ISale
     {        
-        RentalBeginning Emission { get; }
+        RentalBeginning Beginning { get; }
         Bike Bike { get; }
         RentalModality Modality { get; }              
         RentalFinalization Finalization { get; set; }

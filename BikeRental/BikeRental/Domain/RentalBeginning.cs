@@ -8,14 +8,14 @@ namespace BikeRental.Domain
 {
     public class RentalBeginning
     {
-        public IRentalOperator RentalOperatorWhoEmitted { get; }
+        public IRentalOperator RentalOperatorWhoBeganRental { get; }
 
-        public DateTime DateOfBeginning { get; }
+        public DateTime Date { get; }
 
-        public RentalBeginning(IRentalOperator rentalOperatorWhoIsEmitting)
+        public RentalBeginning(IRentalOperator rentalOperatorWhoIsBeginningRental)
         {
-            this.RentalOperatorWhoEmitted = rentalOperatorWhoIsEmitting; 
-            this.DateOfBeginning = DateTime.Now;
+            this.RentalOperatorWhoBeganRental = rentalOperatorWhoIsBeginningRental; 
+            this.Date = DateTime.Now;
         }
 
     }

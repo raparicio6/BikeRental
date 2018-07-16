@@ -17,11 +17,11 @@ namespace BikeRental.Domain
         {
         }
 
-        public override Money CalculateRentalCost(DateTime rentalEmissionDate, DateTime rentalFinalizationDate)
+        public override Money CalculateRentalCost(DateTime rentalBeginningDate, DateTime rentalFinalizationDate)
         {
-            base.ValidateDates(rentalEmissionDate, rentalFinalizationDate);
+            base.ValidateDates(rentalBeginningDate, rentalFinalizationDate);
 
-            double weeks = rentalFinalizationDate.Subtract(rentalEmissionDate).TotalDays / 7;
+            double weeks = rentalFinalizationDate.Subtract(rentalBeginningDate).TotalDays / 7;
             return new Money((decimal)weeks * this.CostPerUnitOfTime.Amount, this.CostPerUnitOfTime.TypeOfCurrency);
         }
 

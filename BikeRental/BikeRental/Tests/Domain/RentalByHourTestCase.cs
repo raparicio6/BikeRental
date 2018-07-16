@@ -16,7 +16,7 @@ namespace BikeRental.Tests.Domain
 
         private Money Dollars_5;
 
-        private DateTime RentalEmissionDate;
+        private DateTime RentalBeginningDate;
         private DateTime RentalFinalizationDate;
 
         [SetUp]
@@ -29,40 +29,40 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void OneHourCostsTheSameAsTheCostPerUnitOfTime()
         {
-            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(1);
+            this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalBeginningDate.AddHours(1);
 
-            Assert.AreEqual(this.Dollars_5, this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, this.RentalFinalizationDate));
+            Assert.AreEqual(this.Dollars_5, this.RentalByHour.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
         }       
 
         [Test]
         public void TwoHoursCostTheSameAsTheCostPerUnitOfTimeMultipliedByTwo()
         {
-            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(2);
+            this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalBeginningDate.AddHours(2);
             Money dollarsMultipliedByTwo = new Money(this.Dollars_5.Amount * 2, this.Dollars_5.TypeOfCurrency);
 
-            Assert.AreEqual(dollarsMultipliedByTwo, this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, this.RentalFinalizationDate));
+            Assert.AreEqual(dollarsMultipliedByTwo, this.RentalByHour.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
         }
 
         [Test]
         public void HalfAnHourCostsTheSameAsHalfOfTheCostPerUnitOfTime()
         {
-            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(0.5);
+            this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalBeginningDate.AddHours(0.5);
             Money halfOfTheDollars = new Money(this.Dollars_5.Amount / 2, this.Dollars_5.TypeOfCurrency);
 
-            Assert.AreEqual(halfOfTheDollars, this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, this.RentalFinalizationDate));
+            Assert.AreEqual(halfOfTheDollars, this.RentalByHour.CalculateRentalCost(this.RentalBeginningDate, this.RentalFinalizationDate));
         }        
 
         [Test]
-        public void FinalizationDateLessThanEmissionDateThrowsFinalizationDateOfRentalLessThanEmissionDateException()
+        public void FinalizationDateLessThanBeginningDateThrowsFinalizationDateOfRentalLessThanBeginningDateException()
         {
-            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(-1);
+            this.RentalBeginningDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalBeginningDate.AddHours(-1);
 
-            Assert.That(() => this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, 
-                this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalLessThanEmissionDateException>());
+            Assert.That(() => this.RentalByHour.CalculateRentalCost(this.RentalBeginningDate, 
+                this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalLessThanBeginningDateException>());
         }
 
     }

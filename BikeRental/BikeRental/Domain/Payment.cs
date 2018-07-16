@@ -12,13 +12,13 @@ namespace BikeRental.Domain
 
         public ICashier CashierWhoCharged { get; }
 
-        public DateTime DateOfPayment { get; } 
+        public DateTime CreationDate { get; } 
         
         public Payment(IClient clientWhoIsPaying, ICashier cashierWhoIsCharging)
         {
             this.ClientWhoPaid = clientWhoIsPaying;
             this.CashierWhoCharged = cashierWhoIsCharging;
-            this.DateOfPayment = DateTime.Now;
+            this.CreationDate = DateTime.Now;
         }
 
     }

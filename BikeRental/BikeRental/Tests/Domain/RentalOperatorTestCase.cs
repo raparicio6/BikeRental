@@ -54,7 +54,7 @@ namespace BikeRental.Tests.Domain
             Assert.AreEqual(rental, this.Bike.Rental);
             Assert.AreEqual(BikeState.In_Use, this.Bike.State);
 
-            Assert.AreEqual(this.RentalOperator, rental.Emission.RentalOperatorWhoEmitted);
+            Assert.AreEqual(this.RentalOperator, rental.Beginning.RentalOperatorWhoBeganRental);
         }
 
         [Test]
@@ -76,6 +76,7 @@ namespace BikeRental.Tests.Domain
         #endregion
 
         #region Finalize Rental Tests
+
 
 
 

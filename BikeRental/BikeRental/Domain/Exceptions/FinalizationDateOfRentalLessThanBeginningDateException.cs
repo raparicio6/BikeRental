@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BikeRental.Domain.Exceptions
 {
-    public class FinalizationDateOfRentalLessThanEmissionDateException : Exception
+    public class FinalizationDateOfRentalLessThanBeginningDateException : Exception
     {
-        public FinalizationDateOfRentalLessThanEmissionDateException(string message) : base(message)
+        public FinalizationDateOfRentalLessThanBeginningDateException(string message) : base(message)
         {
         }
 

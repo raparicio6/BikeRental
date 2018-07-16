@@ -18,12 +18,12 @@ namespace BikeRental.Domain
             this.CostPerUnitOfTime = costPerUnitOfTime;
         }
 
-        public abstract Money CalculateRentalCost(DateTime rentalEmissionDate, DateTime rentalFinalizationDate);
+        public abstract Money CalculateRentalCost(DateTime rentalBeginningDate, DateTime rentalFinalizationDate);
 
-        protected void ValidateDates(DateTime rentalEmissionDate, DateTime rentalFinalizationDate)
+        protected void ValidateDates(DateTime rentalBeginningDate, DateTime rentalFinalizationDate)
         {
-            if (rentalFinalizationDate.CompareTo(rentalEmissionDate) <= 0)
-                throw new FinalizationDateOfRentalLessThanEmissionDateException("The finalization date of the rental must be higher than the date of emission");
+            if (rentalFinalizationDate.CompareTo(rentalBeginningDate) <= 0)
+                throw new FinalizationDateOfRentalLessThanBeginningDateException("The finalization date of the rental must be higher than the beginning date");
         }
 
     }

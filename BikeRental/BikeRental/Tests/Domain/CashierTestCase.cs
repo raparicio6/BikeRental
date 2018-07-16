@@ -29,20 +29,20 @@ namespace BikeRental.Tests.Domain
             this.MockClient = new Mock<IClient>();
 
             this.MockRentalOperator = new Mock<IRentalOperator>();
-            RentalBeginning emission = new RentalBeginning(this.MockRentalOperator.Object);
+            RentalBeginning beginning = new RentalBeginning(this.MockRentalOperator.Object);
 
             BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
             Bike bike = new Bike("ABC043", bikeSpecifications);
 
             RentalByDay rentalByDay = new RentalByDay(new Money(20, Currency.Dollar));
 
-            this.Rental = new Rental(this.MockClient.Object, emission, bike, rentalByDay);            
+            this.Rental = new Rental(this.MockClient.Object, beginning, bike, rentalByDay);            
         }
 
         [Test]
         public void SaleIsPaidAfterCharging()
         {
-            // This is so that the time of emission does not coincide with the time of finalization.
+            // This is so that the time of beginning does not coincide with the time of finalization.
             System.Threading.Thread.Sleep(2000);
 
             Assert.IsFalse(this.Rental.IsPaid());
@@ -56,7 +56,7 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void MoneyReceivedIsUnequalThanPurchaseCostThrowsMoneyReceivedIsUnequalThanPurchaseCostException()
         {
-            // This is so that the time of emission does not coincide with the time of finalization.
+            // This is so that the time of beginning does not coincide with the time of finalization.
             System.Threading.Thread.Sleep(2000);
 
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);            
@@ -68,7 +68,7 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void PurchaseIsAlreadyPaidThrowsPurchaseIsAlreadyPaidException()
         {
-            // This is so that the time of emission does not coincide with the time of finalization.
+            // This is so that the time of beginning does not coincide with the time of finalization.
             System.Threading.Thread.Sleep(2000);
 
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);

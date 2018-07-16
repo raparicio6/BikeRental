@@ -10,15 +10,15 @@ namespace BikeRental.Domain
     {
         public IClient ClientWhoFinalizedRental { get; }
 
-        public IRentalOperator RentalOperatorWhoFinalized { get; }
+        public IRentalOperator RentalOperatorWhoFinalizedRental { get; }
 
-        public DateTime DateOfFinalization { get; }
+        public DateTime Date { get; }
 
-        public RentalFinalization(IClient clientWhoIsFinalizingRental, IRentalOperator rentalOperatorWhoIsFinalizing)
+        public RentalFinalization(IClient clientWhoIsFinalizingRental, IRentalOperator rentalOperatorWhoIsFinalizingRental)
         {
             this.ClientWhoFinalizedRental = clientWhoIsFinalizingRental;
-            this.RentalOperatorWhoFinalized = rentalOperatorWhoIsFinalizing;
-            this.DateOfFinalization = DateTime.Now;
+            this.RentalOperatorWhoFinalizedRental = rentalOperatorWhoIsFinalizingRental;
+            this.Date = DateTime.Now;
         }
 
     }
