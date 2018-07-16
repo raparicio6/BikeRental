@@ -30,31 +30,31 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void ComparingTwoMoneysWithSameAmountAndSameTypeOfCurrencyUsingEqualOperatorAreEqual()
         {
-            Assert.AreEqual(true, this.Dollars_50 == this.AnotherDollars_50);
+            Assert.IsTrue(this.Dollars_50 == this.AnotherDollars_50);
         }
 
         [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndSameTypeOfCurrenrcyUsingEqualOperatorAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_50 == this.Dollars_40);
+            Assert.IsFalse(this.Dollars_50 == this.Dollars_40);
         }
 
         [Test]
         public void ComparingTwoMoneysWithSameAmountAndDiffentTypeOfCurrencyUsingEqualOperatorAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_40 == this.ArgentinePesos_40);
+            Assert.IsFalse(this.Dollars_40 == this.ArgentinePesos_40);
         }
 
         [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndDiffentTypeOfCurrencyUsingEqualOperatorAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_50 == this.ArgentinePesos_40);
+            Assert.IsFalse(this.Dollars_50 == this.ArgentinePesos_40);
         }
 
         [Test]
         public void ComparingMoneyWithNullUsingEqualOperatorAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_50 == null);
+            Assert.IsFalse(this.Dollars_50 == null);
         }       
 
         #endregion
@@ -64,31 +64,31 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void ComparingTwoMoneysWithSameAmountAndSameTypeOfCurrencyUsingInequalOperatorAreNotUnequal()
         {
-            Assert.AreNotEqual(true, this.Dollars_50 != this.AnotherDollars_50);
+            Assert.IsFalse(this.Dollars_50 != this.AnotherDollars_50);
         }
 
         [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndSameTypeOfCurrenrcyUsingInequalOperatorAreUnequal()
         {
-            Assert.AreEqual(true, this.Dollars_50 != this.Dollars_40);
+            Assert.IsTrue(this.Dollars_50 != this.Dollars_40);
         }
 
         [Test]
         public void ComparingTwoMoneysWithSameAmountAndDiffentTypeOfCurrencyUsingInequalOperatorAreUnequal()
         {
-            Assert.AreEqual(true, this.Dollars_40 != this.ArgentinePesos_40);
+            Assert.IsTrue(this.Dollars_40 != this.ArgentinePesos_40);
         }
 
         [Test]
         public void ComparingTwoMoneysWithDiffentAmountAndDiffentTypeOfCurrencyUsingInequalOperatorAreUnequal()
         {
-            Assert.AreEqual(true, this.Dollars_50 != this.ArgentinePesos_40);
+            Assert.IsTrue(this.Dollars_50 != this.ArgentinePesos_40);
         }
 
         [Test]
         public void ComparingMoneyWithNullUsingInequalOperatorAreUnequal()
         {
-            Assert.AreEqual(true, this.Dollars_50 != null);
+            Assert.IsTrue(this.Dollars_50 != null);
         }        
 
         #endregion
@@ -98,31 +98,31 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void ComparingTwoMoneysWithSameAmountAndSameTypeOfCurrencyUsingEqualMethodAreEqual()
         {
-            Assert.AreEqual(true, this.Dollars_50.Equals(this.AnotherDollars_50));
+            Assert.IsTrue(this.Dollars_50.Equals(this.AnotherDollars_50));
         }
 
         [Test]
         public void ComparingTwoMoneysWithDifferentAmountAndSameTypeOfCurrencyUsingEqualMethodAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_50.Equals(this.Dollars_40));
+            Assert.IsFalse(this.Dollars_50.Equals(this.Dollars_40));
         }
 
         [Test]
         public void ComparingTwoMoneysWithSameAmountAndDifferentTypeOfCurrencyUsingEqualMethodAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_40.Equals(this.ArgentinePesos_40));
+            Assert.IsFalse(this.Dollars_40.Equals(this.ArgentinePesos_40));
         }
 
         [Test]
         public void ComparingTwoMoneysWithDifferentAmountAndDifferentTypeOfCurrencyUsingEqualMethodAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_50.Equals(this.ArgentinePesos_40));
+            Assert.IsFalse(this.Dollars_50.Equals(this.ArgentinePesos_40));
         }
 
         [Test]
         public void ComparingMoneyWithNullUsingEqualMethodAreNotEqual()
         {
-            Assert.AreNotEqual(true, this.Dollars_50.Equals(null));
+            Assert.IsFalse(this.Dollars_50.Equals(null));
         }
 
         [Test]

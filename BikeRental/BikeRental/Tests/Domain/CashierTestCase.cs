@@ -44,15 +44,17 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void SaleIsPaidAfterCharging()
         {
+            IClient client = this.MockClient.Object;
+
             // This is so that the beginning time does not coincide with the finalization time.
             System.Threading.Thread.Sleep(2000);
+            this.Rental.Finalization = new RentalFinalization(client, this.MockRentalOperator.Object);
 
-            Assert.IsFalse(this.Rental.IsPaid());
+            Payment payment = this.Cashier.ChargePurchase(client, this.Rental, this.Rental.Cost);
 
-            this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
-            this.Cashier.ChargePurchase(this.MockClient.Object, this.Rental, this.Rental.Cost);
-
-            Assert.IsTrue(this.Rental.IsPaid());
+            Assert.AreEqual(payment, this.Rental.Payment);
+            Assert.AreEqual(this.Cashier, payment.CashierWhoCharged);
+            Assert.AreEqual(client, payment.ClientWhoPaid);
         }
 
         [Test]
@@ -60,7 +62,6 @@ namespace BikeRental.Tests.Domain
         {
             // This is so that the beginning time does not coincide with the finalization time.
             System.Threading.Thread.Sleep(2000);
-
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);            
 
             Assert.That(() => this.Cashier.ChargePurchase(this.MockClient.Object, this.Rental, new Money(this.Rental.Cost.Amount / 2, this.Rental.Cost.TypeOfCurrency)), 
@@ -72,8 +73,8 @@ namespace BikeRental.Tests.Domain
         {
             // This is so that the beginning time does not coincide with the finalization time.
             System.Threading.Thread.Sleep(2000);
-
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
+
             this.Cashier.ChargePurchase(this.MockClient.Object, this.Rental, this.Rental.Cost);
 
             Assert.That(() => this.Cashier.ChargePurchase(this.MockClient.Object, this.Rental, this.Rental.Cost),

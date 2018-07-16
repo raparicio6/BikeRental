@@ -74,7 +74,7 @@ namespace BikeRental.Tests.Domain
         #region Cost Tests
 
         [Test]
-        public void WhenItHasNoFinalizationThrowsRentalHasNotFinalizedYetException()
+        public void GetCostWhenItHasNoFinalizationThrowsRentalHasNotFinalizedYetException()
         {
             Assert.That(() => this.Rental.Cost, Throws.TypeOf<RentalHasNotFinalizedYetException>());
         }
@@ -84,8 +84,8 @@ namespace BikeRental.Tests.Domain
         {
             // This is so that the beginning time does not coincide with the finalization time.
             System.Threading.Thread.Sleep(2000);
-
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
+
             Money expectedCost = this.Rental.Modality.CalculateRentalCost(this.Rental.Beginning.Date, 
                 this.Rental.Finalization.Date);
             Assert.AreEqual(expectedCost, this.Rental.Cost);

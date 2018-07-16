@@ -63,7 +63,7 @@ namespace BikeRental.Tests.Domain
             this.RentalFinalizationDate = this.RentalBeginningDate.AddHours(-1);
 
             Assert.That(() => this.RentalByHour.CalculateRentalCost(this.RentalBeginningDate, 
-                this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalLessThanBeginningDateException>());
+                this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalIsLessThanBeginningDateException>());
         }
 
     }
