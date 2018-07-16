@@ -23,19 +23,9 @@ namespace BikeRental.Domain
         {
             this.Rentals = new List<IRental>();
             this.FamilyRentals = new List<FamilyRental>();
-        }
+        }        
 
-        public void AddRental(IRental rental)
-        {
-            this.Rentals.Add(rental);
-        }
-
-        public void AddFamilyRental(FamilyRental familyRental)
-        {
-            this.FamilyRentals.Add(familyRental);
-        }
-
-        public RentalFinalization FinishRental(IRental rental, IRentalOperator rentalOperator)
+        public RentalFinalization FinalizeRental(IRental rental, IRentalOperator rentalOperator)
         {
             throw new NotImplementedException();
         }
@@ -48,6 +38,16 @@ namespace BikeRental.Domain
         public Rental MakeARental(Bike bike, UnitOfTime unitOfTime, IRentalOperator rentalOperator)
         {
             throw new NotImplementedException();
+        }
+
+        public void AddRental(IRental rental)
+        {
+            this.Rentals.Add(rental);
+        }
+
+        public void AddFamilyRental(FamilyRental familyRental)
+        {
+            this.FamilyRentals.Add(familyRental);
         }
 
         public Payment PayPurchase(ISale purchase, Money money, ICashier cashier)

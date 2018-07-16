@@ -29,7 +29,7 @@ namespace BikeRental.Tests.Domain
             this.MockClient = new Mock<IClient>();
 
             this.MockRentalOperator = new Mock<IRentalOperator>();
-            RentalEmission emission = new RentalEmission(this.MockRentalOperator.Object);
+            RentalBeginning emission = new RentalBeginning(this.MockRentalOperator.Object);
 
             BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
             Bike bike = new Bike("ABC043", bikeSpecifications);

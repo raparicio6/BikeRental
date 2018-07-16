@@ -24,7 +24,7 @@ namespace BikeRental.Tests.Domain
             this.MockClient = new Mock<IClient>();
 
             this.MockRentalOperator = new Mock<IRentalOperator>();
-            RentalEmission emission = new RentalEmission(this.MockRentalOperator.Object);
+            RentalBeginning emission = new RentalBeginning(this.MockRentalOperator.Object);
 
             BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
             Bike bike = new Bike("ABC043", bikeSpecifications);
@@ -34,19 +34,19 @@ namespace BikeRental.Tests.Domain
             this.Rental = new Rental(this.MockClient.Object, emission, bike, modality);
         }
 
-        #region Is Finished Tests
+        #region Is Finalized Tests
 
         [Test]
-        public void WhenIsCreatedItIsNotFinished()
+        public void WhenIsCreatedItIsNotFinalized()
         {
-            Assert.IsFalse(this.Rental.IsFinished());
+            Assert.IsFalse(this.Rental.IsFinalized());
         }
 
         [Test]
-        public void IsFinishedWhenItHasFinalization()
+        public void IsFinalizedWhenItHasFinalization()
         {
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
-            Assert.IsTrue(this.Rental.IsFinished());
+            Assert.IsTrue(this.Rental.IsFinalized());
         }
 
         #endregion
@@ -84,8 +84,8 @@ namespace BikeRental.Tests.Domain
             System.Threading.Thread.Sleep(2000);
 
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
-            Money expectedCost = this.Rental.Modality.CalculateRentalCost(this.Rental.Emission.CreationDate, 
-                this.Rental.Finalization.CreationDate);
+            Money expectedCost = this.Rental.Modality.CalculateRentalCost(this.Rental.Emission.DateOfBeginning, 
+                this.Rental.Finalization.DateOfFinalization);
             Assert.AreEqual(expectedCost, this.Rental.Cost);
         }
 

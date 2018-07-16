@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BikeRental.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,19 +33,57 @@ namespace BikeRental.Domain
             this.CurrentRentalByWeekModality = updatedRentalByWeek;
         }
 
-        public FamilyRental CreateFamilyRental(IClient client, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime)
+        public Rental ProvideRental(IClient client, Bike bike, UnitOfTime unitOfTime)
         {
-            throw new NotImplementedException();
+            if (!bike.IsAvailable())
+                throw new BikeIsNotAvailableException("Bike is not available");
+
+            RentalModality rentalModality;           
+
+            switch (unitOfTime)
+            {
+                case UnitOfTime.Hour:
+                    rentalModality = this.CurrentRentalByHourModality;
+                    break;
+                case UnitOfTime.Day:
+                    rentalModality = this.CurrentRentalByDayModality;
+                    break;
+                case UnitOfTime.Week:
+                    rentalModality = this.CurrentRentalByWeekModality;
+                    break;
+                default:
+                    throw new UnitOfTimeIsNotValidException("Unit of time is not valid");                   
+            }
+
+            Rental rental = new Rental(client, new RentalBeginning(this), bike, rentalModality);
+
+            bike.ChangeState(BikeState.In_Use);
+            bike.Rental = rental;
+
+            client.AddRental(rental);
+
+            return rental;
         }
 
-        public Rental CreateRental(IClient client, Bike bike, UnitOfTime unitOfTime)
+        // Pre condition: The bikes and unitsOfTime ILists must ordered contemplating that elements of the same position are for the same rental
+        public FamilyRental ProvideFamilyRental(IClient client, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime)
         {
             throw new NotImplementedException();
-        }
+        }       
 
-        public RentalFinalization FinishRental(IClient client, IRental rental)
+        public RentalFinalization FinalizeRental(IClient client, IRental rental)
         {
-            throw new NotImplementedException();
+            if (rental.IsFinalized())
+                throw new RentalIsAlreadyFinalizedException("Rental is already finalized");
+
+            RentalFinalization rentalFinalization = new RentalFinalization(client, this);
+            rental.Finalization = rentalFinalization;
+
+            Bike bike = rental.Bike;
+            bike.ChangeState(BikeState.Free);
+            bike.Rental = null;
+
+            return rentalFinalization;
         }               
 
         public void UpdateCurrentFamilyRentalInformation(FamilyRentalInformation updatedFamilyRentalInformation)

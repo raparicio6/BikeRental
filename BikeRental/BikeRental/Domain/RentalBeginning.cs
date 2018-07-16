@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace BikeRental.Domain
 {
-    public class RentalEmission
+    public class RentalBeginning
     {
         public IRentalOperator RentalOperatorWhoEmitted { get; }
 
-        public DateTime CreationDate { get; }
+        public DateTime DateOfBeginning { get; }
 
-        public RentalEmission(IRentalOperator rentalOperatorWhoIsEmitting)
+        public RentalBeginning(IRentalOperator rentalOperatorWhoIsEmitting)
         {
             this.RentalOperatorWhoEmitted = rentalOperatorWhoIsEmitting; 
-            this.CreationDate = DateTime.Now;
+            this.DateOfBeginning = DateTime.Now;
         }
 
     }

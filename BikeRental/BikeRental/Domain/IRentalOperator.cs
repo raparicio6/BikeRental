@@ -8,9 +8,9 @@ namespace BikeRental.Domain
 {
     public interface IRentalOperator : Role
     {
-        Rental CreateRental(IClient client, Bike bike, UnitOfTime unitOfTime);
-        FamilyRental CreateFamilyRental(IClient client, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime);
-        RentalFinalization FinishRental(IClient client, IRental rental);
+        Rental ProvideRental(IClient client, Bike bike, UnitOfTime unitOfTime);
+        FamilyRental ProvideFamilyRental(IClient client, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime);
+        RentalFinalization FinalizeRental(IClient client, IRental rental);
 
         void UpdateCurrentFamilyRentalInformation(FamilyRentalInformation updatedFamilyRentalInformation);
         FamilyRentalInformation CurrentFamilyRentalInformation { get; }

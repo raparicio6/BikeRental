@@ -65,11 +65,14 @@
     <Compile Include="Domain\Cashier.cs" />
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\EmployeeData.cs" />
+    <Compile Include="Domain\Exceptions\BikeIsNotAvailableException.cs" />
     <Compile Include="Domain\Exceptions\FinalizationDateOfRentalLessThanEmissionDateException.cs" />
     <Compile Include="Domain\Exceptions\PurchaseIsAlreadyPaidException.cs" />
     <Compile Include="Domain\Exceptions\MoneyReceivedIsUnequalThanPurchaseCostException.cs" />
     <Compile Include="Domain\Exceptions\PersonAlreadyHasThatRoleException.cs" />
+    <Compile Include="Domain\Exceptions\RentalIsAlreadyFinalizedException.cs" />
     <Compile Include="Domain\Exceptions\RentalHasNotFinalizedYetException.cs" />
+    <Compile Include="Domain\Exceptions\UnitOfTimeIsNotValidException.cs" />
     <Compile Include="Domain\FamilyRental.cs" />
     <Compile Include="Domain\FamilyRentalInformation.cs" />
     <Compile Include="Domain\ICashier.cs" />
@@ -86,7 +89,7 @@
     <Compile Include="Domain\RentalByDay.cs" />
     <Compile Include="Domain\RentalByHour.cs" />
     <Compile Include="Domain\RentalByWeek.cs" />
-    <Compile Include="Domain\RentalEmission.cs" />
+    <Compile Include="Domain\RentalBeginning.cs" />
     <Compile Include="Domain\RentalFinalization.cs" />
     <Compile Include="Domain\RentalModality.cs" />
     <Compile Include="Domain\RentalOperator.cs" />
@@ -95,6 +98,7 @@
     <Compile Include="Domain\UnitOfTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Domain\BikeTestCase.cs" />
+    <Compile Include="Tests\Domain\RentalOperatorTestCase.cs" />
     <Compile Include="Tests\Domain\MoneyTestCase.cs" />
     <Compile Include="Tests\Domain\CashierTestCase.cs" />
     <Compile Include="Tests\Domain\PersonTestCase.cs" />
@@ -103,6 +107,7 @@
     <Compile Include="Tests\Domain\RentalByWeekTestCase.cs" />
     <Compile Include="Tests\Domain\FamilyRentalTestCase.cs" />
     <Compile Include="Tests\Domain\RentalTestCase.cs" />
+    <Compile Include="Tests\Domain\TestsConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

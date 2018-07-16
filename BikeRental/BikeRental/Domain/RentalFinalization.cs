@@ -8,17 +8,17 @@ namespace BikeRental.Domain
 {
     public class RentalFinalization
     {
-        public IClient ClientWhoFinisedhRental { get; }
+        public IClient ClientWhoFinalizedRental { get; }
 
         public IRentalOperator RentalOperatorWhoFinalized { get; }
 
-        public DateTime CreationDate { get; }
+        public DateTime DateOfFinalization { get; }
 
-        public RentalFinalization(IClient clientWhoIsFinishingRental, IRentalOperator rentalOperatorWhoIsFinalizing)
+        public RentalFinalization(IClient clientWhoIsFinalizingRental, IRentalOperator rentalOperatorWhoIsFinalizing)
         {
-            this.ClientWhoFinisedhRental = clientWhoIsFinishingRental;
+            this.ClientWhoFinalizedRental = clientWhoIsFinalizingRental;
             this.RentalOperatorWhoFinalized = rentalOperatorWhoIsFinalizing;
-            this.CreationDate = DateTime.Now;
+            this.DateOfFinalization = DateTime.Now;
         }
 
     }

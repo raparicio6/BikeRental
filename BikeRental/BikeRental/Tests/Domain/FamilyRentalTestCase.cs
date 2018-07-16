@@ -37,9 +37,7 @@ namespace BikeRental.Tests.Domain
             rentals.Add(this.MockRental3.Object);
             rentals.Add(this.MockRental4.Object);
 
-            PromotionRules rules = new PromotionRules("The Family Rental promotion will begin on May 1st and end on August 1st, 2018. " +
-            "There will be a discount of 30 percent making between 3 and 5 rentals. " +
-            "Any person over 16 years of age will be eligible to participate. The promotion is subject to the availability of bicycles.", 
+            PromotionRules rules = new PromotionRules(TestsConstants.FAMILY_RENTAL_TERMS_AND_CONDITIONS, 
             new DateTime(2018, 5, 1, 0, 0, 0), new DateTime(2018, 8, 1, 0, 0, 0));
             FamilyRentalInformation information = new FamilyRentalInformation(30, 3, 5, rules);
 
