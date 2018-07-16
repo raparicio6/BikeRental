@@ -19,7 +19,7 @@ namespace BikeRental.Domain
         public Money Cost
         {
             get { return new Money (this.ApplyDiscount(this.Rentals.Sum(rental => rental.Cost.Amount)), 
-                this.Rentals.First().CostPerUnitOfTime.TypeOfCurrency); }
+                this.Rentals.First().Cost.TypeOfCurrency); }
         }
 
         public PromotionRules Rules
@@ -44,5 +44,6 @@ namespace BikeRental.Domain
         {
             return (amount * (100 - (decimal)this.Information.DiscountPercent)) / 100;
         }
+
     }
 }

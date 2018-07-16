@@ -8,14 +8,21 @@ namespace BikeRental.Domain
 {
     public class Cashier : ICashier
     {
-        public string Name
+        private const string ROLE_NAME = "Cashier";
+
+        public string RoleName
         {
-            get { return "Cashier"; }
+            get { return ROLE_NAME; }
+        }
+
+        public Cashier()
+        {
         }
 
         public Payment ChargePurchase(IClient payingClient, ISale purchase, Money money)
         {
             throw new NotImplementedException();
         }
+
     }
 }

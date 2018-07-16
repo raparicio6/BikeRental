@@ -24,5 +24,6 @@ namespace BikeRental.Domain
             double weeks = rentalFinalizationDate.Subtract(rentalEmissionDate).TotalDays / 7;
             return new Money((decimal)weeks * this.CostPerUnitOfTime.Amount, this.CostPerUnitOfTime.TypeOfCurrency);
         }
+
     }
 }

@@ -15,17 +15,7 @@ namespace BikeRental.Domain
 
         public Bike Bike { get; }
 
-        public RentalModality Modality { get; }
-
-        public UnitOfTime UnitOfTime
-        {
-            get { return this.Modality.UnitOfTime; }
-        }
-
-        public Money CostPerUnitOfTime
-        {
-            get { return this.Modality.CostPerUnitOfTime;}
-        }
+        public RentalModality Modality { get; }        
 
         public RentalFinalization Finalization { get; set; }
 
@@ -61,5 +51,6 @@ namespace BikeRental.Domain
         {
             return this.Payment != null;
         }
+
     }
 }

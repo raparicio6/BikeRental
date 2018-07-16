@@ -10,8 +10,7 @@ namespace BikeRental.Domain
     {        
         RentalEmission Emission { get; }
         Bike Bike { get; }
-        UnitOfTime UnitOfTime { get; }      
-        Money CostPerUnitOfTime { get; }
+        RentalModality Modality { get; }              
         RentalFinalization Finalization { get; set; }
         bool IsFinished();
 

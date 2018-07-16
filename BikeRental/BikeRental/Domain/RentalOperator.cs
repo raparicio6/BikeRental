@@ -8,6 +8,8 @@ namespace BikeRental.Domain
 {
     public class RentalOperator : IRentalOperator
     {
+        private const string ROLE_NAME = "RentalOperator";
+
         public FamilyRentalInformation CurrentFamilyRentalInformation { get; private set; }
 
         public RentalByHour CurrentRentalByHourModality { get; private set; }
@@ -16,9 +18,9 @@ namespace BikeRental.Domain
 
         public RentalByWeek CurrentRentalByWeekModality { get; private set; }
 
-        public string Name
+        public string RoleName
         {
-            get { return "RentalOperator"; }            
+            get { return ROLE_NAME; }            
         }
 
         public RentalOperator(FamilyRentalInformation updatedFamilyRentalInformation, 

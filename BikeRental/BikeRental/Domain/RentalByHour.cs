@@ -24,5 +24,6 @@ namespace BikeRental.Domain
             double hours = rentalFinalizationDate.Subtract(rentalEmissionDate).TotalHours;
             return new Money((decimal)hours * this.CostPerUnitOfTime.Amount, this.CostPerUnitOfTime.TypeOfCurrency);
         }
+
     }
 }

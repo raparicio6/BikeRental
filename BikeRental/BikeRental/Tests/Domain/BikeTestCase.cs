@@ -13,13 +13,13 @@ namespace BikeRental.Tests.Domain
     {
         private Bike Bike;
         private BikeSpecifications BikeSpecifications;
-        private readonly string IdentificationCode = "ABC043";        
+        private const string IDENTIFICATION_CODE = "ABC043";        
 
         [SetUp]
         public void SetUp()
         {
             this.BikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
-            this.Bike = new Bike(this.IdentificationCode, this.BikeSpecifications);
+            this.Bike = new Bike(IDENTIFICATION_CODE, this.BikeSpecifications);
         }
 
         [Test]

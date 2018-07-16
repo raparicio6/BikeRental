@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BikeRental.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BikeRental.Domain
 {
     public class Person
     {
-        public long IdNumber { get; }
+        public string IdNumber { get; }
 
         public string Name { get; }
 
@@ -20,7 +21,7 @@ namespace BikeRental.Domain
 
         public IList<Role> Roles { get; }
 
-        public Person(long idNumber, string name, string lastName, string phone, string email)
+        public Person(string idNumber, string name, string lastName, string phone, string email)
         {
             this.IdNumber = idNumber;
             this.Name = name;
@@ -32,12 +33,15 @@ namespace BikeRental.Domain
 
         public void AddRole(Role role)
         {
+            if (this.GetRoleByName(role.RoleName) != null)
+                throw new PersonAlreadyHasThatRoleException("Person already has that role");
+
             this.Roles.Add(role);
         }
 
         public Role GetRoleByName(string roleName)
         {
-            return this.Roles.Where(role => role.Name == roleName).First();
+            return this.Roles.Where(role => role.RoleName == roleName).FirstOrDefault();
         }
 
     }

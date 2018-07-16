@@ -9,5 +9,6 @@ namespace BikeRental.Domain
     public interface ICashier : Role
     {
         Payment ChargePurchase(IClient payingClient, ISale purchase, Money money);
+
     }
 }
