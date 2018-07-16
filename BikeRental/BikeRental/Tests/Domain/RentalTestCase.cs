@@ -36,7 +36,7 @@ namespace BikeRental.Tests.Domain
             this.BikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
             this.Bike = new Bike(BIKE_IDENTIFICATION_CODE, this.BikeSpecifications);
 
-            this.Modality = new RentalByHour(new Money(5, TypeOfCurrency.Dollar));
+            this.Modality = new RentalByHour(new Money(5, Currency.Dollar));
 
             this.Rental = new Rental(this.MockClient.Object, this.Emission, this.Bike, this.Modality);
         }

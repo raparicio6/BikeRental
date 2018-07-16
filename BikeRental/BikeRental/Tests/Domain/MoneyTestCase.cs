@@ -19,10 +19,10 @@ namespace BikeRental.Tests.Domain
         [SetUp]
         public void SetUp()
         {
-            this.Dollars_50 = new Money(50, TypeOfCurrency.Dollar);
-            this.Dollars_40 = new Money(40, TypeOfCurrency.Dollar);
-            this.ArgentinePesos_40 = new Money(40, TypeOfCurrency.Argentine_Peso);
-            this.AnotherDollars_50 = new Money(50, TypeOfCurrency.Dollar);
+            this.Dollars_50 = new Money(50, Currency.Dollar);
+            this.Dollars_40 = new Money(40, Currency.Dollar);
+            this.ArgentinePesos_40 = new Money(40, Currency.Argentine_Peso);
+            this.AnotherDollars_50 = new Money(50, Currency.Dollar);
         }
 
         #region Equality Operator Tests

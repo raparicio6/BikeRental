@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BikeRental.Domain
 {
-    public enum TypeOfCurrency
+    public enum Currency
     {
         Dollar,
         Argentine_Peso,

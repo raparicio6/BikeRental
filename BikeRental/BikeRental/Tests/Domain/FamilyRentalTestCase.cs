@@ -73,13 +73,13 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void CostIsGottenWithTheDiscountApplied()
         {
-            this.MockRental1.Setup(rental => rental.Cost).Returns(new Money(7, TypeOfCurrency.Dollar));
-            this.MockRental2.Setup(rental => rental.Cost).Returns(new Money(12, TypeOfCurrency.Dollar));
-            this.MockRental3.Setup(rental => rental.Cost).Returns(new Money(55, TypeOfCurrency.Dollar));
-            this.MockRental4.Setup(rental => rental.Cost).Returns(new Money(26, TypeOfCurrency.Dollar));
+            this.MockRental1.Setup(rental => rental.Cost).Returns(new Money(7, Currency.Dollar));
+            this.MockRental2.Setup(rental => rental.Cost).Returns(new Money(12, Currency.Dollar));
+            this.MockRental3.Setup(rental => rental.Cost).Returns(new Money(55, Currency.Dollar));
+            this.MockRental4.Setup(rental => rental.Cost).Returns(new Money(26, Currency.Dollar));
 
             Money expectedCost = new Money(((this.FamilyRental.Rentals.Sum(rental => rental.Cost.Amount)) 
-                * (100 - (decimal)this.FamilyRental.Information.DiscountPercent)) / 100, TypeOfCurrency.Dollar);
+                * (100 - (decimal)this.FamilyRental.Information.DiscountPercent)) / 100, Currency.Dollar);
 
             Assert.AreEqual(expectedCost, this.FamilyRental.Cost);
         }

@@ -10,9 +10,9 @@ namespace BikeRental.Domain
     {
         public decimal Amount { get; }
 
-        public TypeOfCurrency TypeOfCurrency { get; }
+        public Currency TypeOfCurrency { get; }
 
-        public Money(decimal amount, TypeOfCurrency typeOfCurrency)
+        public Money(decimal amount, Currency typeOfCurrency)
         {
             this.Amount = amount;
             this.TypeOfCurrency = typeOfCurrency;

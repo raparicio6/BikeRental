@@ -20,7 +20,7 @@ namespace BikeRental.Tests.Domain
         [SetUp]
         public void SetUp()
         {
-            this.Dollars_20 = new Money(20, TypeOfCurrency.Dollar);
+            this.Dollars_20 = new Money(20, Currency.Dollar);
             this.RentalByDay = new RentalByDay(this.Dollars_20);
         }
 

@@ -89,7 +89,7 @@
     <Compile Include="Domain\RentalModality.cs" />
     <Compile Include="Domain\RentalOperator.cs" />
     <Compile Include="Domain\Role.cs" />
-    <Compile Include="Domain\TypeOfCurrency.cs" />
+    <Compile Include="Domain\Currency.cs" />
     <Compile Include="Domain\UnitOfTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Domain\BikeTestCase.cs" />
