@@ -23,7 +23,7 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void HasTheRoleAfterAddingIt()
         {
-            Cashier cashier = new Cashier();
+            ICashier cashier = new Cashier();
             this.Person.AddRole(cashier);
             Assert.AreEqual(cashier, this.Person.GetRoleByName(cashier.RoleName));
         }
@@ -31,10 +31,12 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void AddingRoleThatAlreadyHasThrowsPersonAlreadyHasThatRoleException()
         {
-            Cashier cashier = new Cashier();
-            this.Person.AddRole(cashier);           
+            ICashier cashier = new Cashier();
+            this.Person.AddRole(cashier);
 
-            Assert.That(() => this.Person.AddRole(cashier), Throws.TypeOf<PersonAlreadyHasThatRoleException>());
+            ICashier anotherCashier = new Cashier();           
+
+            Assert.That(() => this.Person.AddRole(anotherCashier), Throws.TypeOf<PersonAlreadyHasThatRoleException>());
         }
     }
 

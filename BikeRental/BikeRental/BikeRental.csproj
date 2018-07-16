@@ -66,6 +66,8 @@
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\EmployeeData.cs" />
     <Compile Include="Domain\Exceptions\FinalizationDateOfRentalLessThanEmissionDateException.cs" />
+    <Compile Include="Domain\Exceptions\PurchaseIsAlreadyPaidException.cs" />
+    <Compile Include="Domain\Exceptions\MoneyReceivedIsUnequalThanPurchaseCostException.cs" />
     <Compile Include="Domain\Exceptions\PersonAlreadyHasThatRoleException.cs" />
     <Compile Include="Domain\Exceptions\RentalHasNotFinalizedYetException.cs" />
     <Compile Include="Domain\FamilyRental.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Domain\BikeTestCase.cs" />
     <Compile Include="Tests\Domain\MoneyTestCase.cs" />
+    <Compile Include="Tests\Domain\CashierTestCase.cs" />
     <Compile Include="Tests\Domain\PersonTestCase.cs" />
     <Compile Include="Tests\Domain\RentalByDayTestCase.cs" />
     <Compile Include="Tests\Domain\RentalByHourTestCase.cs" />

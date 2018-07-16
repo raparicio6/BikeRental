@@ -22,12 +22,6 @@ namespace BikeRental.Tests.Domain
         private Mock<IRental> MockRental3;
         private Mock<IRental> MockRental4;
 
-        private FamilyRentalInformation Information;
-        private PromotionRules Rules;        
-        private const string TERMS_AND_CONDITIONS = "The Family Rental promotion will begin on May 1st and end on August 1st, 2018. " +
-            "There will be a discount of 30 percent making between 3 and 5 rentals. " +
-            "Any person over 16 years of age will be eligible to participate. The promotion is subject to the availability of bicycles.";            
-
         [SetUp]
         public void SetUp()
         {
@@ -43,11 +37,13 @@ namespace BikeRental.Tests.Domain
             rentals.Add(this.MockRental3.Object);
             rentals.Add(this.MockRental4.Object);
 
-            this.Rules = new PromotionRules(TERMS_AND_CONDITIONS, new DateTime(2018, 5, 1, 0, 0, 0),
-               new DateTime(2018, 8, 1, 0, 0, 0));
-            this.Information = new FamilyRentalInformation(30, 3, 5, this.Rules);
+            PromotionRules rules = new PromotionRules("The Family Rental promotion will begin on May 1st and end on August 1st, 2018. " +
+            "There will be a discount of 30 percent making between 3 and 5 rentals. " +
+            "Any person over 16 years of age will be eligible to participate. The promotion is subject to the availability of bicycles.", 
+            new DateTime(2018, 5, 1, 0, 0, 0), new DateTime(2018, 8, 1, 0, 0, 0));
+            FamilyRentalInformation information = new FamilyRentalInformation(30, 3, 5, rules);
 
-            this.FamilyRental = new FamilyRental(this.MockClient.Object, this.Information, rentals);
+            this.FamilyRental = new FamilyRental(this.MockClient.Object, information, rentals);
         }       
 
         #region Is Paid Tests

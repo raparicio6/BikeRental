@@ -11,15 +11,13 @@ namespace BikeRental.Tests.Domain
     [TestFixture]
     public class BikeTestCase
     {
-        private Bike Bike;
-        private BikeSpecifications BikeSpecifications;
-        private const string IDENTIFICATION_CODE = "ABC043";        
+        private Bike Bike;             
 
         [SetUp]
         public void SetUp()
         {
-            this.BikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
-            this.Bike = new Bike(IDENTIFICATION_CODE, this.BikeSpecifications);
+            BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
+            this.Bike = new Bike("ABC043", bikeSpecifications);
         }
 
         [Test]

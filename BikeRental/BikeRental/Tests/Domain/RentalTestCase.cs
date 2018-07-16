@@ -16,14 +16,7 @@ namespace BikeRental.Tests.Domain
 
         private Mock<IClient> MockClient;
 
-        private Mock<IRentalOperator> MockRentalOperator;
-        private RentalEmission Emission;
-
-        private Bike Bike;
-        private BikeSpecifications BikeSpecifications;
-        private const string BIKE_IDENTIFICATION_CODE = "ABC043";        
-
-        private RentalModality Modality;        
+        private Mock<IRentalOperator> MockRentalOperator;            
 
         [SetUp]
         public void SetUp()
@@ -31,14 +24,14 @@ namespace BikeRental.Tests.Domain
             this.MockClient = new Mock<IClient>();
 
             this.MockRentalOperator = new Mock<IRentalOperator>();
-            this.Emission = new RentalEmission(this.MockRentalOperator.Object);
+            RentalEmission emission = new RentalEmission(this.MockRentalOperator.Object);
 
-            this.BikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
-            this.Bike = new Bike(BIKE_IDENTIFICATION_CODE, this.BikeSpecifications);
+            BikeSpecifications bikeSpecifications = new BikeSpecifications("Schwinn", "Continental Commuter 7", "Black");
+            Bike bike = new Bike("ABC043", bikeSpecifications);
 
-            this.Modality = new RentalByHour(new Money(5, Currency.Dollar));
+            RentalModality modality = new RentalByHour(new Money(5, Currency.Dollar));
 
-            this.Rental = new Rental(this.MockClient.Object, this.Emission, this.Bike, this.Modality);
+            this.Rental = new Rental(this.MockClient.Object, emission, bike, modality);
         }
 
         #region Is Finished Tests
@@ -88,7 +81,7 @@ namespace BikeRental.Tests.Domain
         public void CostIsGottenWhenItIsFinalized()
         {
             // This is so that the time of emission does not coincide with the time of finalization.
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(2000);
 
             this.Rental.Finalization = new RentalFinalization(this.MockClient.Object, this.MockRentalOperator.Object);
             Money expectedCost = this.Rental.Modality.CalculateRentalCost(this.Rental.Emission.CreationDate, 

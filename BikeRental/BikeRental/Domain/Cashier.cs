@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BikeRental.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,22 @@ namespace BikeRental.Domain
         {
         }
 
-        public Payment ChargePurchase(IClient payingClient, ISale purchase, Money money)
+        private bool MoneyIsCorrect(Money cost, Money moneyReceived)
         {
-            throw new NotImplementedException();
+            return cost == moneyReceived;
+        }
+
+        public Payment ChargePurchase(IClient payingClient, ISale purchase, Money moneyReceived)
+        {
+            if (purchase.IsPaid())
+                throw new PurchaseIsAlreadyPaidException("The purchase is already paid");
+
+            if (!this.MoneyIsCorrect(purchase.Cost, moneyReceived))
+                throw new MoneyReceivedIsUnequalThanPurchaseCostException("Money received is unequal than the purchase cost");
+
+            Payment payment = new Payment(payingClient, this);
+            purchase.Payment = payment;
+            return payment;
         }
 
     }

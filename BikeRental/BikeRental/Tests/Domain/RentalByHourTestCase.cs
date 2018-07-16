@@ -13,7 +13,9 @@ namespace BikeRental.Tests.Domain
     public class RentalByHourTestCase
     {
         private RentalByHour RentalByHour;
+
         private Money Dollars_5;
+
         private DateTime RentalEmissionDate;
         private DateTime RentalFinalizationDate;
 
@@ -27,8 +29,8 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void OneHourCostsTheSameAsTheCostPerUnitOfTime()
         {
-            RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            RentalFinalizationDate = RentalEmissionDate.AddHours(1);
+            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(1);
 
             Assert.AreEqual(this.Dollars_5, this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, this.RentalFinalizationDate));
         }       
@@ -36,8 +38,8 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void TwoHoursCostTheSameAsTheCostPerUnitOfTimeMultipliedByTwo()
         {
-            RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            RentalFinalizationDate = RentalEmissionDate.AddHours(2);
+            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(2);
             Money dollarsMultipliedByTwo = new Money(this.Dollars_5.Amount * 2, this.Dollars_5.TypeOfCurrency);
 
             Assert.AreEqual(dollarsMultipliedByTwo, this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, this.RentalFinalizationDate));
@@ -46,8 +48,8 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void HalfAnHourCostsTheSameAsHalfOfTheCostPerUnitOfTime()
         {
-            RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            RentalFinalizationDate = RentalEmissionDate.AddHours(0.5);
+            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(0.5);
             Money halfOfTheDollars = new Money(this.Dollars_5.Amount / 2, this.Dollars_5.TypeOfCurrency);
 
             Assert.AreEqual(halfOfTheDollars, this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, this.RentalFinalizationDate));
@@ -56,8 +58,8 @@ namespace BikeRental.Tests.Domain
         [Test]
         public void FinalizationDateLessThanEmissionDateThrowsFinalizationDateOfRentalLessThanEmissionDateException()
         {
-            RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
-            RentalFinalizationDate = RentalEmissionDate.AddHours(-1);
+            this.RentalEmissionDate = new DateTime(2018, 12, 10, 14, 0, 0);
+            this.RentalFinalizationDate = this.RentalEmissionDate.AddHours(-1);
 
             Assert.That(() => this.RentalByHour.CalculateRentalCost(this.RentalEmissionDate, 
                 this.RentalFinalizationDate), Throws.TypeOf<FinalizationDateOfRentalLessThanEmissionDateException>());
