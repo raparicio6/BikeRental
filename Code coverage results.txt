@@ -1,0 +1,10 @@
+Visited Classes 47 of 49 (95.92)
+Visited Methods 160 of 166 (96.39)
+Visited Points 838 of 862 (97.22)
+Visited Branches 207 of 214 (96.73)
+
+==== Alternative Results (includes all methods including those without corresponding source) ====
+Alternative Visited Classes 47 of 49 (95.92)
+Alternative Visited Methods 160 of 187 (85.56)
+
+Done with AxoCover
