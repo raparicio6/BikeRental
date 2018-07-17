@@ -303,6 +303,28 @@ namespace BikeRental.Tests.Domain
 
         #endregion
 
+        [Test]
+        public void UpdateProperties()
+        {
+            RentalByHour rentalByHour = new RentalByHour(new Money(TestsConstants.RENTAL_BY_HOUR_AMOUNT * 2,
+                TestsConstants.RENTAL_BY_HOUR_TYPE_OF_CURRENCY));
+            RentalByDay rentalByDay = new RentalByDay(new Money(TestsConstants.RENTAL_BY_DAY_AMOUNT * 2,
+                TestsConstants.RENTAL_BY_DAY_TYPE_OF_CURRENCY));
+            RentalByWeek rentalByWeek = new RentalByWeek(new Money(TestsConstants.RENTAL_BY_WEEK_AMOUNT * 2,
+                TestsConstants.RENTAL_BY_WEEK_TYPE_OF_CURRENCY));
+
+            this.RentalOperator.UpdateCurrentRentalByHourModality(rentalByHour);
+            this.RentalOperator.UpdateCurrentRentalByDayModality(rentalByDay);
+            this.RentalOperator.UpdateCurrentRentalByWeekModality(rentalByWeek);
+            Assert.AreEqual(rentalByHour, this.RentalOperator.CurrentRentalByHourModality);
+            Assert.AreEqual(rentalByDay, this.RentalOperator.CurrentRentalByDayModality);
+            Assert.AreEqual(rentalByWeek, this.RentalOperator.CurrentRentalByWeekModality);
+
+            FamilyRentalInformation familyRentalInformation = new FamilyRentalInformation(
+                TestsConstants.FAMILY_RENTAL_DISCOUNT_PERCENT, 6, 10, this.FamilyRentalRules);
+            this.RentalOperator.UpdateCurrentFamilyRentalInformation(familyRentalInformation);
+            Assert.AreEqual(familyRentalInformation, this.RentalOperator.CurrentFamilyRentalInformation);
+        }
 
     }
 }

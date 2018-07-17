@@ -23,21 +23,26 @@ namespace BikeRental.Domain
         {
             this.Rentals = new List<IRental>();
             this.FamilyRentals = new List<FamilyRental>();
-        }        
-
-        public RentalFinalization FinalizeRental(IRental rental, IRentalOperator rentalOperator)
-        {
-            throw new NotImplementedException();
-        }
-
-        public FamilyRental RequestAFamilyRental(IList<IClient> clientsOfTheRentals, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime, IRentalOperator rentalOperator)
-        {
-            throw new NotImplementedException();
         }
 
         public Rental RequestARental(Bike bike, UnitOfTime unitOfTime, IRentalOperator rentalOperator)
         {
-            throw new NotImplementedException();
+            return rentalOperator.ProvideRental(this, bike, unitOfTime);
+        }
+
+        public FamilyRental RequestAFamilyRental(IList<IClient> clientsOfTheRentals, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime, IRentalOperator rentalOperator)
+        {
+            return rentalOperator.ProvideFamilyRental(this, clientsOfTheRentals, bikes, unitsOfTime);
+        }        
+
+        public RentalFinalization FinalizeRental(IRental rental, IRentalOperator rentalOperator)
+        {
+            return rentalOperator.FinalizeRental(this, rental);
+        }        
+
+        public Payment PayPurchase(ISale purchase, Money money, ICashier cashier)
+        {
+            return cashier.ChargePurchase(this, purchase, money);
         }
 
         public void AddRental(IRental rental)
@@ -48,11 +53,6 @@ namespace BikeRental.Domain
         public void AddFamilyRental(FamilyRental familyRental)
         {
             this.FamilyRentals.Add(familyRental);
-        }
-
-        public Payment PayPurchase(ISale purchase, Money money, ICashier cashier)
-        {
-            throw new NotImplementedException();
         }
 
     }
