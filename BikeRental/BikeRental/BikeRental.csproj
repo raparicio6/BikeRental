@@ -65,6 +65,8 @@
     <Compile Include="Domain\Cashier.cs" />
     <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\EmployeeData.cs" />
+    <Compile Include="Domain\Exceptions\AmountOfRentalsWantedDoesNotRespectTheEstablishedMarginException.cs" />
+    <Compile Include="Domain\Exceptions\AmountOfClientsAndBikesAndUnitsOfTimeDoNotMatchException.cs" />
     <Compile Include="Domain\Exceptions\BikeIsNotAvailableException.cs" />
     <Compile Include="Domain\Exceptions\FinalizationDateOfRentalIsLessThanBeginningDateException.cs" />
     <Compile Include="Domain\Exceptions\PurchaseIsAlreadyPaidException.cs" />

@@ -30,12 +30,12 @@ namespace BikeRental.Domain
             throw new NotImplementedException();
         }
 
-        public FamilyRental MakeAFamilyRental(IList<Bike> bikes, IList<UnitOfTime> unitsOfTime, IRentalOperator rentalOperator)
+        public FamilyRental RequestAFamilyRental(IList<IClient> clientsOfTheRentals, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime, IRentalOperator rentalOperator)
         {
             throw new NotImplementedException();
         }
 
-        public Rental MakeARental(Bike bike, UnitOfTime unitOfTime, IRentalOperator rentalOperator)
+        public Rental RequestARental(Bike bike, UnitOfTime unitOfTime, IRentalOperator rentalOperator)
         {
             throw new NotImplementedException();
         }

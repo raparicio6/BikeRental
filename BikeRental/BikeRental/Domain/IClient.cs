@@ -8,8 +8,8 @@ namespace BikeRental.Domain
 {
     public interface IClient : Role
     {        
-        Rental MakeARental(Bike bike, UnitOfTime unitOfTime, IRentalOperator rentalOperator);
-        FamilyRental MakeAFamilyRental(IList<Bike> bikes, IList<UnitOfTime> unitsOfTime, IRentalOperator rentalOperator);
+        Rental RequestARental(Bike bike, UnitOfTime unitOfTime, IRentalOperator rentalOperator);
+        FamilyRental RequestAFamilyRental(IList<IClient> clientsOfTheRentals, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime, IRentalOperator rentalOperator);
         RentalFinalization FinalizeRental(IRental rental, IRentalOperator rentalOperator);
         IList<IRental> Rentals { get; }
         IList<FamilyRental> FamilyRentals { get; }

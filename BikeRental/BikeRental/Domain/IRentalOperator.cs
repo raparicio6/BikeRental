@@ -9,7 +9,7 @@ namespace BikeRental.Domain
     public interface IRentalOperator : Role
     {
         Rental ProvideRental(IClient client, Bike bike, UnitOfTime unitOfTime);
-        FamilyRental ProvideFamilyRental(IClient client, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime);
+        FamilyRental ProvideFamilyRental(IClient clientWhoRequests, IList<IClient> clientsOfTheRentals, IList<Bike> bikes, IList<UnitOfTime> unitsOfTime);
         RentalFinalization FinalizeRental(IClient client, IRental rental);
 
         void UpdateCurrentFamilyRentalInformation(FamilyRentalInformation updatedFamilyRentalInformation);

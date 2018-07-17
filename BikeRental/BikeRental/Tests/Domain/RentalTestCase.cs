@@ -24,7 +24,7 @@ namespace BikeRental.Tests.Domain
             this.MockClient = new Mock<IClient>();
 
             this.MockRentalOperator = new Mock<IRentalOperator>();
-            RentalBeginning beginning = new RentalBeginning(this.MockRentalOperator.Object);
+            RentalBeginning rentalBeginning = new RentalBeginning(this.MockRentalOperator.Object);
 
             BikeSpecifications bikeSpecifications = new BikeSpecifications(TestsConstants.BIKE_BRAND,
                 TestsConstants.BIKE_MODEL, TestsConstants.BIKE_COLOR);
@@ -33,7 +33,7 @@ namespace BikeRental.Tests.Domain
             RentalModality rentalModality = new RentalByHour(new Money(TestsConstants.RENTAL_BY_HOUR_AMOUNT,
                 TestsConstants.RENTAL_BY_HOUR_TYPE_OF_CURRENCY));
 
-            this.Rental = new Rental(this.MockClient.Object, beginning, bike, rentalModality);
+            this.Rental = new Rental(this.MockClient.Object, rentalBeginning, bike, rentalModality);
         }
 
         #region Is Finalized Tests
